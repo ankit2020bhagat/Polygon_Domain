@@ -12,6 +12,7 @@ const main = async () => {
     let txn = await deployContract.register("beast",{value :  ethers.utils.parseEther('0.1')});
 
     await txn.wait();
+    
 
     console.log("Owner of domain beast ",await deployContract.getAddress("beast"));
 
