@@ -1,16 +1,32 @@
 require("@nomicfoundation/hardhat-toolbox");
+require("@nomiclabs/hardhat-etherscan");
 
+require('dotenv').config();
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   solidity: "0.8.17",
+  paths: {
+    artifacts: './domain-starter/src/artifacts',
+  },
   networks: {
-    // mumbai: {
-    //   url: "https://polygon-mumbai.g.alchemy.com/v2/Xn6_UT4h8ipZUI5IsHXA-1pE-FOWIL-2",
-    //   accounts: ["a4ccf5962d34ea2d1b202f57a0bf331e7114ce4e9eca8eec87a1049ed331804d"],
-    // },
-    goerli: {
-      url: "https://eth-goerli.g.alchemy.com/v2/GFg7TsPqZV0ZaIxRgWrGRJDEaEvkvyA0",
-      accounts: ["093da99a97487abdf1a45677fd60b8fe156fc3d4bf0e64a2648d032e60c57fc3"]
+     mumbai: {
+      url: process.env.MUMBAI_API_KEY_URL,
+      accounts: [process.env.PRIVATE_KEY],
+      },
+      goerli: {
+        url:  process.env.GOERLI_API_KEY_URL,
+        accounts: [process.env.PRIVATE_KEY],
+       
+      },
+      hardhat:{
+        chainId:31337,
     },
+   
+  },
+  etherscan: {
+    // Your API key for Etherscan
+    // Obtain one at https://etherscan.io/
+    apiKey: "C69P9MZEMUHNW8U7KQFET5RNZ1J9FWU1R8",
   }
+ 
 };
